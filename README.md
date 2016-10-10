@@ -60,3 +60,11 @@ None
 ## License
 
 MIT
+
+
+Author Information
+------------------
+
+[Matt Margolin](mailto:matt.margolin@gmail.com)
+
+mm0 on github
