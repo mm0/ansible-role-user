@@ -29,6 +29,8 @@ Available variables are listed below, there are no defaults:
         password: "$6$..." # password hash
       users:
         username_1:
+          groups: username_1, additional_group
+          state: present
           password: "$6$rounds=p...." # password hash
           ssh_key:
           - "ssh-rsa ..." #allows for multiple keys
@@ -46,6 +48,8 @@ None
       - master_users_list:
         users:
           travis:
+            groups: travis, additional_group
+            state: present
             password: "$6$rounds=100000$76usz5L2Y.bpvtTB$vtivr8XwS0al8MA2q2s/YKEu312l7gHnK3eLkRo9QmKmk5XIIsDDAZmT7Hrc0YaLTQjD7wZ//HbwM49YjsxkJ/" # password hash
             ssh_key:
             - "ssh-rsa 1234"
