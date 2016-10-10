@@ -1,11 +1,12 @@
 - hosts: all
   vars:
-    users:
-      travis:
-        groups: travis
-        state: present
-        password: "$6$rounds=100000$76usz5L2Y.bpvtTB$vtivr8XwS0al8MA2q2s/YKEu312l7gHnK3eLkRo9QmKmk5XIIsDDAZmT7Hrc0YaLTQjD7wZ//HbwM49YjsxkJ/" # password hash
-        ssh_key:
-        - "ssh-rsa 1234"
+    master_users_list:
+      users:
+        travis:
+          groups: travis
+          state: present
+          password: "$6$rounds=100000$76usz5L2Y.bpvtTB$vtivr8XwS0al8MA2q2s/YKEu312l7gHnK3eLkRo9QmKmk5XIIsDDAZmT7Hrc0YaLTQjD7wZ//HbwM49YjsxkJ/" # password hash
+          ssh_key:
+          - "ssh-rsa 1234"
   roles:
   - ansible-role-user
