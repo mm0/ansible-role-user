@@ -1,0 +1,5 @@
+{% if master_users_list.users[ item.key ] is defined %}
+{% for pub_key in master_users_list.users[item.key ].ssh_key %}
+{{ pub_key }} 
+{% endfor %}
+{% endif %}
