@@ -1,6 +1,7 @@
-# README.md
+Ansible Role: User v1.0
+===
 
-# Ansible Role: User v1.0
+[![Build Status](https://travis-ci.org/mm0/ansible-role-user.svg?branch=master)](https://travis-ci.org/mm0/ansible-role-user)
 
 An Ansible role that creates users, updates passwords, configures authorized_keys file for ssh.
 
@@ -14,57 +15,63 @@ For each user in master_users_list.users[], `ssh_key` list is lineinfiled into /
 
 See Also: ansible-role-sudo, ansible-role-bash
 
-![travis-ci](https://travis-ci.org/mm0/ansible-role-user.svg?branch=master)
 
-## Requirements
+Requirements
+--
 
-Sudo access
+- Sudo access
 
-## Role Variables
+Role Variables
+--
 
 Available variables are listed below, there are no defaults:
 
-    master_users_list: 
-      root: # root user handled separately as home directory is different than the rest of users
-        password: "$6$..." # password hash
-      users:
-        username_1:
-          groups: username_1, additional_group
-          state: present
-          password: "$6$rounds=p...." # password hash
-          ssh_key:
-          - "ssh-rsa ..." #allows for multiple keys
-          - "ssh-rsa ... #key 2 for username_1"
-        
+```yml
+master_users_list: 
+  root: # root user handled separately as home directory is different than the rest of users
+    password: "$6$..." # password hash
+  users:
+    username_1:
+      groups: username_1, additional_group
+      state: present
+      password: "$6$rounds=p...." # password hash
+      ssh_key:
+      - "ssh-rsa ..." #allows for multiple keys
+      - "ssh-rsa ... #key 2 for username_1"    
+```
 
-## Dependencies
+Dependencies
+--
 
 None 
 
-## Example Playbook
+Example Playbook
+--
 
-    - hosts: webservers
-      vars:
-      - master_users_list:
-        users:
-          travis:
-            groups: travis, additional_group
-            state: present
-            password: "$6$rounds=100000$76usz5L2Y.bpvtTB$vtivr8XwS0al8MA2q2s/YKEu312l7gHnK3eLkRo9QmKmk5XIIsDDAZmT7Hrc0YaLTQjD7wZ//HbwM49YjsxkJ/" # password hash
-            ssh_key:
-            - "ssh-rsa 1234"
-        
-      roles:
-      - ansible-role-user
+```yml
+- hosts: webservers
+  vars:
+  - master_users_list:
+      users:
+        travis:
+          groups: travis, additional_group
+          state: present
+          password: "$6$rounds=100000$76usz5L2Y.bpvtTB$vtivr8XwS0al8MA2q2s/YKEu312l7gHnK3eLkRo9QmKmk5XIIsDDAZmT7Hrc0YaLTQjD7wZ//HbwM49YjsxkJ/" # password hash
+          ssh_key:
+          - "ssh-rsa 1234"
+    
+  roles:
+  - ansible-role-user
+```
 
-## License
+License
+---------------
 
-MIT
-
+BSD-2
 
 Author Information
 ------------------
 
 [Matt Margolin](mailto:matt.margolin@gmail.com)
 
-mm0 on github
+[mm0](https://github.com/mm0) on github
